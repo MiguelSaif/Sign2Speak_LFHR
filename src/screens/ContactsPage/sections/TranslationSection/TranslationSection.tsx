@@ -81,28 +81,28 @@ export const TranslationSection = (): JSX.Element => {
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-12">
           <div className="flex items-center justify-center gap-2 mb-4">
-            <Sparkles className="w-6 h-6 text-purple-600" />
-            <span className="font-small-text font-semibold text-purple-600 uppercase tracking-wide">
+            <Sparkles className="w-6 h-6 text-purple-400" />
+            <span className="font-small-text font-semibold text-purple-400 uppercase tracking-wide">
               Powered by Gemini 2.5
             </span>
           </div>
-          <h2 className="font-heading font-bold text-4xl text-gray-900 mb-4">
+          <h2 className="font-heading font-bold text-4xl text-white mb-4">
             Real-time Sign Language Translation
           </h2>
-          <p className="font-body-text text-lg text-gray-600 max-w-2xl mx-auto">
+          <p className="font-body-text text-lg text-gray-300 max-w-2xl mx-auto">
             Use your camera for live translation or upload video files for processing with our advanced AI technology.
           </p>
         </div>
 
         {/* Tab Navigation */}
         <div className="flex justify-center mb-8">
-          <div className="bg-gray-100 p-1 rounded-lg">
+          <div className="bg-gray-800 p-1 rounded-lg border border-gray-700">
             <button
               onClick={() => setActiveTab('camera')}
               className={`px-6 py-2 rounded-md font-medium transition-all ${
                 activeTab === 'camera'
-                  ? 'bg-white text-blue-600 shadow-sm'
-                  : 'text-gray-600 hover:text-gray-900'
+                  ? 'bg-gray-700 text-blue-400 shadow-sm'
+                  : 'text-gray-400 hover:text-gray-200'
               }`}
             >
               <Camera className="w-4 h-4 inline mr-2" />
@@ -112,8 +112,8 @@ export const TranslationSection = (): JSX.Element => {
               onClick={() => setActiveTab('upload')}
               className={`px-6 py-2 rounded-md font-medium transition-all ${
                 activeTab === 'upload'
-                  ? 'bg-white text-blue-600 shadow-sm'
-                  : 'text-gray-600 hover:text-gray-900'
+                  ? 'bg-gray-700 text-blue-400 shadow-sm'
+                  : 'text-gray-400 hover:text-gray-200'
               }`}
             >
               <Upload className="w-4 h-4 inline mr-2" />
@@ -125,7 +125,7 @@ export const TranslationSection = (): JSX.Element => {
         {activeTab === 'camera' ? (
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             {/* Video Input Section */}
-            <Card className="overflow-hidden bg-white shadow-xl border-0">
+            <Card className="overflow-hidden bg-gray-800 shadow-xl border border-gray-700">
               <CardContent className="p-0">
                 <div className="relative bg-gray-900 aspect-video flex items-center justify-center">
                   <video
@@ -137,7 +137,7 @@ export const TranslationSection = (): JSX.Element => {
                   
                   {!isRecording && (
                     <div className="absolute inset-0 flex items-center justify-center bg-gray-900/50">
-                      <div className="text-center text-white">
+                      <div className="text-center text-gray-400">
                         <Camera className="w-16 h-16 mx-auto mb-4 opacity-50" />
                         <p className="font-body-text text-lg">Camera feed will appear here</p>
                       </div>
@@ -164,7 +164,7 @@ export const TranslationSection = (): JSX.Element => {
                 </div>
 
                 {/* Controls */}
-                <div className="p-6 bg-gray-50">
+                <div className="p-6 bg-gray-800">
                   <div className="flex items-center justify-center gap-4">
                     {!isRecording ? (
                       <Button
@@ -190,16 +190,16 @@ export const TranslationSection = (): JSX.Element => {
             </Card>
 
             {/* Translation Output Section */}
-            <Card className="bg-white shadow-xl border-0">
+            <Card className="bg-gray-800 shadow-xl border border-gray-700">
               <CardContent className="p-6">
                 <div className="mb-6">
-                  <label className="block font-small-text font-medium text-gray-700 mb-2">
+                  <label className="block font-small-text font-medium text-gray-300 mb-2">
                     Translate to:
                   </label>
                   <select
                     value={selectedLanguage}
                     onChange={(e) => setSelectedLanguage(e.target.value)}
-                    className="w-full p-3 border border-gray-300 rounded-lg font-body-text focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    className="w-full p-3 border border-gray-600 rounded-lg font-body-text focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-gray-700 text-white"
                   >
                     {languages.map((lang) => (
                       <option key={lang} value={lang}>{lang}</option>
@@ -208,16 +208,16 @@ export const TranslationSection = (): JSX.Element => {
                 </div>
 
                 <div className="mb-6">
-                  <label className="block font-small-text font-medium text-gray-700 mb-2">
+                  <label className="block font-small-text font-medium text-gray-300 mb-2">
                     Translation:
                   </label>
-                  <div className="min-h-[200px] p-4 bg-gray-50 rounded-lg border-2 border-dashed border-gray-300">
+                  <div className="min-h-[200px] p-4 bg-gray-700 rounded-lg border-2 border-dashed border-gray-600">
                     {translatedText ? (
-                      <p className="font-body-text text-gray-900 leading-relaxed">
+                      <p className="font-body-text text-gray-100 leading-relaxed">
                         {translatedText}
                       </p>
                     ) : (
-                      <p className="font-body-text text-gray-500 italic">
+                      <p className="font-body-text text-gray-400 italic">
                         Translation will appear here...
                       </p>
                     )}
@@ -230,7 +230,7 @@ export const TranslationSection = (): JSX.Element => {
                     <Button
                       onClick={speakText}
                       variant="outline"
-                      className="flex items-center gap-2"
+                      className="flex items-center gap-2 border-gray-600 text-gray-300 hover:bg-gray-700"
                     >
                       <Volume2 className="w-4 h-4" />
                       Speak
@@ -239,7 +239,7 @@ export const TranslationSection = (): JSX.Element => {
                     <Button
                       onClick={copyToClipboard}
                       variant="outline"
-                      className="flex items-center gap-2"
+                      className="flex items-center gap-2 border-gray-600 text-gray-300 hover:bg-gray-700"
                     >
                       <Copy className="w-4 h-4" />
                       Copy
@@ -247,7 +247,7 @@ export const TranslationSection = (): JSX.Element => {
                     
                     <Button
                       variant="outline"
-                      className="flex items-center gap-2"
+                      className="flex items-center gap-2 border-gray-600 text-gray-300 hover:bg-gray-700"
                     >
                       <Download className="w-4 h-4" />
                       Export
@@ -266,42 +266,42 @@ export const TranslationSection = (): JSX.Element => {
 
         {/* Features Info */}
         <div className="mt-12 grid grid-cols-1 md:grid-cols-4 gap-6">
-          <div className="text-center p-6 bg-white/50 rounded-xl">
-            <Languages className="w-8 h-8 text-blue-600 mx-auto mb-3" />
-            <h3 className="font-heading font-semibold text-lg text-gray-900 mb-2">
+          <div className="text-center p-6 bg-gray-800/50 rounded-xl border border-gray-700">
+            <Languages className="w-8 h-8 text-blue-400 mx-auto mb-3" />
+            <h3 className="font-heading font-semibold text-lg text-white mb-2">
               100+ Languages
             </h3>
-            <p className="font-small-text text-gray-600">
+            <p className="font-small-text text-gray-300">
               Translate to over 100 languages with high accuracy
             </p>
           </div>
           
-          <div className="text-center p-6 bg-white/50 rounded-xl">
-            <Sparkles className="w-8 h-8 text-purple-600 mx-auto mb-3" />
-            <h3 className="font-heading font-semibold text-lg text-gray-900 mb-2">
+          <div className="text-center p-6 bg-gray-800/50 rounded-xl border border-gray-700">
+            <Sparkles className="w-8 h-8 text-purple-400 mx-auto mb-3" />
+            <h3 className="font-heading font-semibold text-lg text-white mb-2">
               AI-Powered
             </h3>
-            <p className="font-small-text text-gray-600">
+            <p className="font-small-text text-gray-300">
               Advanced machine learning with Gemini 2.5 technology
             </p>
           </div>
           
-          <div className="text-center p-6 bg-white/50 rounded-xl">
-            <Camera className="w-8 h-8 text-green-600 mx-auto mb-3" />
-            <h3 className="font-heading font-semibold text-lg text-gray-900 mb-2">
+          <div className="text-center p-6 bg-gray-800/50 rounded-xl border border-gray-700">
+            <Camera className="w-8 h-8 text-green-400 mx-auto mb-3" />
+            <h3 className="font-heading font-semibold text-lg text-white mb-2">
               Real-time Processing
             </h3>
-            <p className="font-small-text text-gray-600">
+            <p className="font-small-text text-gray-300">
               Instant translation as you sign with minimal delay
             </p>
           </div>
 
-          <div className="text-center p-6 bg-white/50 rounded-xl">
-            <Video className="w-8 h-8 text-orange-600 mx-auto mb-3" />
-            <h3 className="font-heading font-semibold text-lg text-gray-900 mb-2">
+          <div className="text-center p-6 bg-gray-800/50 rounded-xl border border-gray-700">
+            <Video className="w-8 h-8 text-orange-400 mx-auto mb-3" />
+            <h3 className="font-heading font-semibold text-lg text-white mb-2">
               Video Upload
             </h3>
-            <p className="font-small-text text-gray-600">
+            <p className="font-small-text text-gray-300">
               Upload MP4, 3GP files for batch processing
             </p>
           </div>

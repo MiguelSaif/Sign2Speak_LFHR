@@ -29,21 +29,28 @@ export const HeroSection = (): JSX.Element => {
   return (
     <section className="relative px-8 py-20 overflow-hidden">
       {/* Background Elements */}
-      <div className="absolute inset-0 bg-gradient-to-r from-blue-600/5 to-purple-600/5 rounded-3xl mx-8"></div>
-      <div className="absolute top-10 right-10 w-32 h-32 bg-blue-200/30 rounded-full blur-xl"></div>
-      <div className="absolute bottom-10 left-10 w-40 h-40 bg-purple-200/30 rounded-full blur-xl"></div>
+      <div className="absolute inset-0 bg-gradient-to-r from-blue-600/10 to-purple-600/10 rounded-3xl mx-8"></div>
+      <div className="absolute top-10 right-10 w-32 h-32 bg-blue-400/20 rounded-full blur-xl"></div>
+      <div className="absolute bottom-10 left-10 w-40 h-40 bg-purple-400/20 rounded-full blur-xl"></div>
       
       {/* Header Logos */}
-      <div className="absolute top-6 right-8 flex items-center gap-4 z-20">
+      <div className="absolute top-6 right-8 flex items-start gap-3 z-20">
+        <a 
+          href="https://bolt.new" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          className="hover:scale-105 transition-transform duration-200"
+        >
+          <img 
+            src="/black_circle_360x360.png" 
+            alt="Bolt Logo" 
+            className="h-12 w-12 opacity-90 hover:opacity-100 transition-opacity duration-200"
+          />
+        </a>
         <img 
           src="/logotext_poweredby_360w (1).png" 
           alt="Powered by Bolt" 
-          className="h-8 w-auto opacity-80 hover:opacity-100 transition-opacity duration-200"
-        />
-        <img 
-          src="/black_circle_360x360.png" 
-          alt="Bolt Logo" 
-          className="h-10 w-10 opacity-80 hover:opacity-100 transition-opacity duration-200"
+          className="h-8 w-auto opacity-80 hover:opacity-100 transition-opacity duration-200 mt-2"
         />
       </div>
       
@@ -53,29 +60,29 @@ export const HeroSection = (): JSX.Element => {
           <div className="mb-6">
             <div className="flex items-center justify-center gap-4 mb-2">
               {/* Sign - Smaller with dynamic bold shape */}
-              <h1 className="font-title font-black text-4xl md:text-6xl lg:text-7xl text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600 tracking-tight leading-none transform -skew-x-6 shadow-lg">
+              <h1 className="font-title font-black text-4xl md:text-6xl lg:text-7xl text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400 tracking-tight leading-none transform -skew-x-6 shadow-lg">
                 Sign
               </h1>
               
               {/* Number 2 - Large and prominent */}
-              <span className="font-title font-black text-8xl md:text-[10rem] lg:text-[12rem] text-transparent bg-clip-text bg-gradient-to-br from-purple-600 via-blue-600 to-purple-800 tracking-tight leading-none drop-shadow-2xl">
+              <span className="font-title font-black text-8xl md:text-[10rem] lg:text-[12rem] text-transparent bg-clip-text bg-gradient-to-br from-purple-400 via-blue-400 to-purple-600 tracking-tight leading-none drop-shadow-2xl">
                 2
               </span>
               
               {/* Speak - Matching Sign style */}
-              <h1 className="font-title font-black text-4xl md:text-6xl lg:text-7xl text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-blue-600 tracking-tight leading-none transform skew-x-6 shadow-lg">
+              <h1 className="font-title font-black text-4xl md:text-6xl lg:text-7xl text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-blue-400 tracking-tight leading-none transform skew-x-6 shadow-lg">
                 Speak
               </h1>
             </div>
           </div>
           
           {/* Subtitle */}
-          <p className="font-subheading text-2xl md:text-3xl text-gray-700 mb-8 max-w-4xl mx-auto leading-relaxed">
+          <p className="font-subheading text-2xl md:text-3xl text-gray-200 mb-8 max-w-4xl mx-auto leading-relaxed">
             Breaking barriers through AI-powered sign language translation
           </p>
           
           {/* Description */}
-          <p className="font-body-text text-lg text-gray-600 max-w-2xl mx-auto mb-12 leading-relaxed">
+          <p className="font-body-text text-lg text-gray-300 max-w-2xl mx-auto mb-12 leading-relaxed">
             Experience seamless communication with our cutting-edge translation technology powered by Google's experimental Gemini 2.5 model.
           </p>
         </div>
@@ -83,7 +90,7 @@ export const HeroSection = (): JSX.Element => {
         {/* Feature Cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {features.map((feature, index) => (
-            <Card key={index} className="p-6 bg-white/80 backdrop-blur-sm border-0 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+            <Card key={index} className="p-6 bg-white/90 backdrop-blur-sm border-0 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
               <div className="flex flex-col items-center text-center space-y-4">
                 <div className="p-3 bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl text-white">
                   <feature.icon className="w-6 h-6" />
