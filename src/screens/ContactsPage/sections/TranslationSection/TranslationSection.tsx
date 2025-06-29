@@ -31,7 +31,11 @@ export const TranslationSection = (): JSX.Element => {
   const startRecording = useCallback(async () => {
     try {
       const stream = await navigator.mediaDevices.getUserMedia({ 
-        video: { width: 640, height: 480 },
+        video: { 
+          width: { ideal: 1280 },
+          height: { ideal: 720 },
+          frameRate: { ideal: 30 }
+        },
         audio: false 
       });
       
@@ -53,6 +57,22 @@ export const TranslationSection = (): JSX.Element => {
       
     } catch (error) {
       console.error("Error accessing camera:", error);
+      // Fallback to lower resolution if 720p fails
+      try {
+        const fallbackStream = await navigator.mediaDevices.getUserMedia({ 
+          video: { width: 640, height: 480 },
+          audio: false 
+        });
+        
+        if (videoRef.current) {
+          videoRef.current.srcObject = fallbackStream;
+          videoRef.current.play();
+        }
+        
+        setIsRecording(true);
+      } catch (fallbackError) {
+        console.error("Error accessing camera with fallback:", fallbackError);
+      }
     }
   }, []);
 
@@ -117,7 +137,7 @@ export const TranslationSection = (): JSX.Element => {
               }`}
             >
               <Upload className="w-4 h-4 inline mr-2" />
-              Upload Video
+              Upload Footage
             </button>
           </div>
         </div>
@@ -139,7 +159,8 @@ export const TranslationSection = (): JSX.Element => {
                     <div className="absolute inset-0 flex items-center justify-center bg-gray-900/50">
                       <div className="text-center text-gray-400">
                         <Camera className="w-16 h-16 mx-auto mb-4 opacity-50" />
-                        <p className="font-body-text text-lg">Camera feed will appear here</p>
+                        <p className="font-body-text text-lg">720p Camera feed will appear here</p>
+                        <p className="font-small-text text-sm text-gray-500 mt-2">HD quality for better recognition</p>
                       </div>
                     </div>
                   )}
@@ -148,7 +169,7 @@ export const TranslationSection = (): JSX.Element => {
                   {isRecording && (
                     <div className="absolute top-4 left-4 flex items-center gap-2 bg-red-500 text-white px-3 py-1 rounded-full">
                       <div className="w-2 h-2 bg-white rounded-full animate-pulse"></div>
-                      <span className="font-small-text text-sm font-medium">Recording</span>
+                      <span className="font-small-text text-sm font-medium">Recording HD</span>
                     </div>
                   )}
 
@@ -172,7 +193,7 @@ export const TranslationSection = (): JSX.Element => {
                         className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white px-8 py-3 rounded-xl font-medium transition-all duration-200 shadow-lg hover:shadow-xl"
                       >
                         <Play className="w-5 h-5 mr-2" />
-                        Start Translation
+                        Start HD Translation
                       </Button>
                     ) : (
                       <Button
@@ -289,17 +310,17 @@ export const TranslationSection = (): JSX.Element => {
           <div className="text-center p-6 bg-gray-800/50 rounded-xl border border-gray-700">
             <Camera className="w-8 h-8 text-green-400 mx-auto mb-3" />
             <h3 className="font-heading font-semibold text-lg text-white mb-2">
-              Real-time Processing
+              HD Processing
             </h3>
             <p className="font-small-text text-gray-300">
-              Instant translation as you sign with minimal delay
+              720p HD video for enhanced sign recognition accuracy
             </p>
           </div>
 
           <div className="text-center p-6 bg-gray-800/50 rounded-xl border border-gray-700">
             <Video className="w-8 h-8 text-orange-400 mx-auto mb-3" />
             <h3 className="font-heading font-semibold text-lg text-white mb-2">
-              Video Upload
+              Upload Footage
             </h3>
             <p className="font-small-text text-gray-300">
               Upload MP4, 3GP files for batch processing

@@ -51,12 +51,13 @@ export const useFFmpeg = () => {
       // Write input file
       await ffmpeg.writeFile(inputName, await fetchFile(file));
 
-      // Convert video with optimization for web streaming
+      // Convert video with 720p optimization for web streaming
       await ffmpeg.exec([
         '-i', inputName,
         '-c:v', 'libx264',
         '-preset', 'fast',
         '-crf', '23',
+        '-vf', 'scale=-2:720', // Scale to 720p height, maintain aspect ratio
         '-c:a', 'aac',
         '-b:a', '128k',
         '-movflags', '+faststart',
@@ -95,6 +96,7 @@ export const useFFmpeg = () => {
         '-i', inputName,
         '-ss', timeOffset.toString(),
         '-vframes', '1',
+        '-vf', 'scale=-2:720', // Generate 720p thumbnail
         '-q:v', '2',
         outputName
       ]);
