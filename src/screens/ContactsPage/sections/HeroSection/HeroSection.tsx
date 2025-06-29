@@ -33,6 +33,20 @@ export const HeroSection = (): JSX.Element => {
       <div className="absolute top-10 right-10 w-32 h-32 bg-blue-200/30 rounded-full blur-xl"></div>
       <div className="absolute bottom-10 left-10 w-40 h-40 bg-purple-200/30 rounded-full blur-xl"></div>
       
+      {/* Header Logos */}
+      <div className="absolute top-6 right-8 flex items-center gap-4 z-20">
+        <img 
+          src="/logotext_poweredby_360w (1).png" 
+          alt="Powered by Bolt" 
+          className="h-8 w-auto opacity-80 hover:opacity-100 transition-opacity duration-200"
+        />
+        <img 
+          src="/black_circle_360x360.png" 
+          alt="Bolt Logo" 
+          className="h-10 w-10 opacity-80 hover:opacity-100 transition-opacity duration-200"
+        />
+      </div>
+      
       <div className="relative z-10 max-w-6xl mx-auto">
         <div className="text-center mb-16">
           {/* Main Title with Dynamic Design */}
