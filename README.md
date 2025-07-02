@@ -1,4 +1,5 @@
-# Anima Project
+# Sign 2 Speak : LFH London Founders House @Re-Bolt 
+@Projective
 
 Welcome! This project has been manually generated via human writings by Henry using [Anima](https://animaapp.com/).
 
